@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f9">
+  <meta name="description" content="Fate/Grand Orderのメインストーリーとサーヴァント個別シナリオの楽しみ方を、ネタバレなしで紹介します。">
+  <title>FGOのストーリーを楽しむための初心者ガイド｜Fateくらぶ</title>
+  <style>
+    :root{color-scheme:light;--bg:#f7f7f9;--paper:#fff;--ink:#25283a;--muted:#686d7d;--red:#bd4148;--gold:#956d27;--line:rgba(35,39,58,.13);--serif:"Yu Mincho","Hiragino Mincho ProN",serif;--sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.85 var(--sans)}a{color:inherit;text-decoration:none}a:hover{color:var(--red)}.topline{height:3px;background:linear-gradient(90deg,var(--red),#a34351 42%,#d9b878)}.wrap{width:min(960px,calc(100% - 36px));margin:auto}
+    header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:2}.head{height:70px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.mark{width:52px;height:44px;object-fit:contain;display:block;flex:0 0 auto}.brand-name{font:19px var(--serif);letter-spacing:.06em}.brand-sub{display:block;color:var(--muted);font:9px var(--sans);letter-spacing:.16em;margin-top:1px}.back{font-size:12px;color:#555b6b}
+    main{padding:38px 0 70px}.crumbs{font-size:11px;color:var(--muted);margin-bottom:18px}.crumbs span{margin:0 7px;color:#a1a3ad}.article{background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:clamp(22px,5vw,54px);box-shadow:0 5px 20px rgba(30,34,51,.035)}.category{display:inline-block;color:#9c3f45;background:#fff3f1;border:1px solid rgba(189,65,72,.22);border-radius:2px;padding:2px 9px;font-size:10px}.article h1{font:500 clamp(28px,4vw,42px)/1.45 var(--serif);margin:18px 0 12px;letter-spacing:.03em}.meta{display:flex;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:11px;border-bottom:1px solid var(--line);padding-bottom:20px}.intro{font-size:16px;color:#4d5262;margin:25px 0 30px}.article-body h2{font:500 24px/1.5 var(--serif);margin:38px 0 13px;padding-left:13px;border-left:3px solid var(--red)}.article-body p{margin:0 0 18px}.article-body .placeholder{color:var(--muted);background:#f7f7f9;border:1px dashed var(--line);padding:18px;border-radius:4px;font-size:13px}
+    .share{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:33px 0 0;padding:18px 0;border-block:1px solid var(--line)}.share-label{font-size:12px;font-weight:600;margin-right:4px}.share-btn{border:1px solid var(--line);border-radius:3px;background:#fff;padding:8px 13px;font:600 12px var(--sans);cursor:pointer;transition:.18s}.share-btn:hover{transform:translateY(-1px);box-shadow:0 3px 10px rgba(30,34,51,.09)}.share-x{background:#16181e;color:#fff;border-color:#16181e}.share-line{background:#06c755;color:#fff;border-color:#06c755}.share-status{width:100%;min-height:18px;color:var(--muted);font-size:11px;margin:0}
+    .sources{margin:28px 0 0;padding-top:17px;border-top:1px solid var(--line);font-size:12px}.sources h2{font:500 16px var(--serif);margin:0 0 7px}.sources ul{padding-left:20px;margin:0}.sources a{color:#835f20;text-decoration:underline}
+    .comments{margin-top:32px}.comments h2{font:500 23px var(--serif);margin:0 0 13px}.comment-note{border:1px solid rgba(149,109,39,.18);background:#fbf7ec;color:#65583d;border-radius:3px;padding:14px 16px;font-size:12px}.comment-preview{margin-top:15px;background:#fafafd;border:1px solid var(--line);border-radius:4px;padding:17px}.comment-preview label{display:block;font-size:11px;font-weight:600;margin:0 0 6px}.comment-preview input,.comment-preview textarea{width:100%;border:1px solid var(--line);border-radius:3px;padding:10px;background:#f3f4f7;color:var(--muted);font:13px var(--sans);margin:0 0 13px}.comment-preview textarea{height:92px;resize:vertical}.comment-preview button{border:0;background:#c4c6ce;color:white;border-radius:3px;padding:9px 15px;font-size:12px;cursor:not-allowed}
+    footer{border-top:1px solid var(--line);background:#eceef2;padding:21px 0;color:var(--muted);font-size:10px}.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    @media(max-width:560px){.head{height:62px}.back{font-size:11px}main{padding-top:25px}.article{padding:22px 18px}.intro{font-size:14px}.share{gap:7px}.share-btn{padding:8px 10px}.share-label{width:100%}.foot{flex-direction:column;gap:5px}}
+  </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6203850017576221" crossorigin="anonymous"></script></head>
+<body>
+  <div class="topline"></div>
+  <header><div class="wrap head"><a class="brand" href="index.html"><img class="mark" src="images/blue-command-seal.png" alt="" aria-hidden="true"><span class="brand-name">Fateくらぶ<span class="brand-sub">型月まとめ</span></span></a><a class="back" href="index.html">← トップへ戻る</a></div></header>
+  <main class="wrap">
+    <nav class="crumbs"><a href="index.html">トップ</a><span>›</span><span>FGOのストーリーを楽しむための初心者ガイド</span></nav>
+    <article class="article">
+      <span class="category">Fate/Grand Order</span>
+      <h1>FGOのストーリーを楽しむための初心者ガイド</h1>
+      <div class="meta"><span>作品：Fate/Grand Order</span><span>ネタバレ：なし</span><span>コメント 0件</span></div>
+      <p class="intro">FGOを始めたばかりで、物語の量や読み進め方が気になっている人へ。公式の案内をもとに、ストーリーの基本と自分のペースで楽しむコツを紹介します。</p>
+      <div class="article-body">
+        <h2>物語を軸に進むFate RPG</h2>
+        <p>『Fate/Grand Order』では、メインストーリーがアドベンチャー形式で進みます。公式サイトは、Fateシリーズの作家陣による大きなボリュームの物語を本作の特徴として紹介しています。物語を追うことが、ゲームを続ける楽しみのひとつです。</p>
+        <p>長編なので、最初から全体を把握しようとしなくて大丈夫です。まずはゲーム内で読める範囲を少しずつ進め、気になった登場人物や章をきっかけに興味を広げると入りやすくなります。</p>
+        <h2>メインストーリーと個別シナリオ</h2>
+        <p>公式の「遊び方」ページでは、メインストーリーのほか、サーヴァントごとの個別シナリオも紹介されています。個別シナリオは、絆レベルや再臨段階、メインストーリーの進行度などに応じて開放されるものがあります。</p>
+        <p>お気に入りのサーヴァントができたら、その人物のシナリオを読むのも楽しみ方のひとつです。開放条件はゲーム内表示を確認し、無理のない範囲で目標にしてみましょう。</p>
+        <h2>ネタバレを避けて自分のペースで</h2>
+        <p>章の感想や考察を読むのは、該当箇所を読み終えてからにすると安心です。検索結果やSNSの見出しに先の展開が含まれることもあるため、未読の章がある間は作品名だけで検索するのを控える方法もあります。</p>
+        <p>まずは公式の世界紹介と遊び方を確認し、気になるところから少しずつ物語に触れてみてください。</p>
+      </div>
+        <section class="sources" aria-label="出典"><h2>出典・参考</h2><ul>
+          <li><a href="https://www.fate-go.jp/howto/story.html" target="_blank" rel="noopener noreferrer">Fate/Grand Order 公式サイト「ストーリー」</a></li>
+          <li><a href="https://www.fate-go.jp/world/1st/" target="_blank" rel="noopener noreferrer">Fate/Grand Order 公式サイト「FGOの世界」</a></li>
+        </ul></section>
+      <div class="share" aria-label="この記事をシェア">
+        <span class="share-label">この記事をシェア</span>
+        <button class="share-btn share-x" id="share-x" type="button">Xでシェア</button>
+        <button class="share-btn share-line" id="share-line" type="button">LINEで送る</button>
+        <button class="share-btn" id="share-native" type="button">ほかのアプリで共有</button>
+        <button class="share-btn" id="copy-link" type="button">リンクをコピー</button>
+        <p class="share-status" id="share-status" aria-live="polite"></p>
+      </div>
+      <section class="comments" aria-labelledby="comments-title">
+  <h2 id="comments-title">コメント</h2>
+  <p class="comment-note">コメント機能は再構築中です。再開後、この欄に表示します。</p>
+</section>
+    </article>
+  </main>
+  <footer><div class="wrap foot"><span>Fateくらぶ｜型月まとめ</span><span>TYPE-MOON作品のファンによる非公式サイトです。</span></div></footer>
+  <script>
+    const shareUrl = window.location.href;
+    const shareTitle = document.title;
+    const status = document.getElementById('share-status');
+    document.getElementById('share-x').addEventListener('click', () => {
+      const url = new URL('https://x.com/intent/tweet');
+      url.searchParams.set('text', shareTitle);
+      url.searchParams.set('url', shareUrl);
+      window.open(url.toString(), '_blank', 'noopener,noreferrer');
+    });
+    document.getElementById('share-line').addEventListener('click', () => {
+      const url = new URL('https://social-plugins.line.me/lineit/share');
+      url.searchParams.set('url', shareUrl);
+      url.searchParams.set('text', shareTitle);
+      window.open(url.toString(), '_blank', 'noopener,noreferrer');
+    });
+    document.getElementById('share-native').addEventListener('click', async () => {
+      if (navigator.share) {
+        try { await navigator.share({title: shareTitle, url: shareUrl}); }
+        catch (error) { if (error.name !== 'AbortError') status.textContent = '共有を開けませんでした。リンクコピーをご利用ください。'; }
+      } else {
+        try { await navigator.clipboard.writeText(shareUrl); status.textContent = 'この記事のリンクをコピーしました。'; }
+        catch { status.textContent = 'お使いのブラウザーでは共有できません。リンクをコピーしてご利用ください。'; }
+      }
+    });
+    document.getElementById('copy-link').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(shareUrl); status.textContent = 'この記事のリンクをコピーしました。'; }
+      catch { status.textContent = 'リンクをコピーできませんでした。アドレスバーからコピーしてください。'; }
+    });
+  </script>
+</body>
+</html>
+
