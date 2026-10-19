@@ -46,7 +46,7 @@
     .recommend-foot{display:flex;justify-content:space-between;gap:10px;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:10px}
     .card a{display:block;color:inherit}
     .card a:hover{color:inherit}
-    .card-foot .comment-count{color:#686d7d}
+    .card-foot{justify-content:flex-end;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}.card-foot .comment-count{display:inline-flex;align-items:center;gap:4px;color:#686d7d;font-size:10px}
     footer{background:#eceef2}
     .foot-links{color:#5b6070}.copyright,.disclaimer{color:#686d7d}
       .card-art.card-art-shizuhis{height:160px;align-items:center;gap:16px;padding:10px 14px;background:linear-gradient(135deg,#272541,#3d3554)}.card-art.card-art-shizuhis:after{display:none}.card-art-shizuhis img{display:block;height:100%;max-width:38%;width:auto;object-fit:contain;z-index:1;box-shadow:0 2px 8px rgba(0,0,0,.24)}
@@ -189,7 +189,7 @@
   next?.addEventListener('click', () => slider.scrollBy({left: slider.clientWidth, behavior: 'smooth'}));
   slider?.addEventListener('scroll', updateSlider, {passive: true});
   window.addEventListener('resize', updateSlider);
-  updateSlider();
+  updateSlider();document.querySelectorAll('.card').forEach(card=>{const body=card.querySelector('.card-body');if(!body||body.querySelector('.card-foot'))return;const foot=document.createElement('div');foot.className='card-foot';const count=document.createElement('span');count.className='comment-count';count.textContent='コメント 0件';foot.append(count);body.append(foot);});
 </script>
 </body>
 </html>
