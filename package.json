@@ -1,0 +1,13 @@
+{
+  "name": "fate-club-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "esbuild identity-invite.js --bundle --format=esm --platform=browser --target=es2020 --outfile=identity-invite.bundle.js"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.4",
+    "@netlify/identity": "^2.0.0",
+    "esbuild": "^0.28.1"
+  }
+}

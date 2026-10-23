@@ -26,7 +26,7 @@
     <article class="article">
       <span class="category">魔法使いの夜</span>
       <h1>魔法使いの夜はどんな作品？ネタバレなし入門ガイド</h1>
-      <div class="meta"><span>作品：魔法使いの夜</span><span>ネタバレ：なし</span><span>コメント 0件</span></div>
+      <div class="meta"><span>作品：魔法使いの夜</span><span>ネタバレ：なし</span></div>
       <p class="intro">TYPE-MOON作品が気になるけれど、魔法使いの夜から入っても楽しめる？ 公式の紹介をもとに、物語の入口と作品の雰囲気をネタバレなしでまとめました。</p>
       <div class="article-body">
         <h2>1980年代後半を舞台にした物語</h2>
@@ -52,9 +52,10 @@
         <p class="share-status" id="share-status" aria-live="polite"></p>
       </div>
       <section class="comments" aria-labelledby="comments-title">
-  <h2 id="comments-title">コメント</h2>
-  <p class="comment-note">コメント機能は再構築中です。再開後、この欄に表示します。</p>
-</section>
+        <h2 id="comments-title">コメント</h2>
+        <div id="comments-widget" class="comments-widget" aria-label="コメント欄"></div>
+        <noscript><p class="comment-note">コメントを表示するにはJavaScriptを有効にしてください。</p></noscript>
+      </section>
       <section class="related" aria-labelledby="related-title" style="margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:13px">
         <h2 id="related-title" style="font:500 18px var(--serif);margin:0 0 10px">あわせて読みたい</h2>
         <ul style="padding-left:20px;margin:0">
@@ -96,6 +97,7 @@
       catch { status.textContent = 'リンクをコピーできませんでした。アドレスバーからコピーしてください。'; }
     });
   </script>
+  <script src="./comments.js" defer></script>
 </body>
 </html>
 

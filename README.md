@@ -4,7 +4,15 @@
 
 GitHub Pages などの静的ホスティングにそのまま配置できます。フォルダーを公開したあと、サイト設定で Pages の公開元を `main` ブランチのルートに設定します。
 
-コメント投稿は Netlify Functions に依存していたため、この公開版では一時停止しています。おすすめ欄は固定表示で、月間閲覧数ランキングではありません。
+## コメント欄（GitHub Pages + Netlify）
+
+GitHub Pages に投稿フォームを表示し、Netlify のフォーム処理と Functions でコメントを保存します。名前は任意で、投稿は管理画面で確認してから掲載します。承認済みコメントは Netlify の読み取り API から記事ページに表示されます。GitHub アカウントは不要です。
+
+コメント用 Netlify サイトは [symphonious-griffin-6489ff.netlify.app](https://symphonious-griffin-6489ff.netlify.app/) です。管理画面は [コメント管理](https://symphonious-griffin-6489ff.netlify.app/comments-admin.html) です。Netlify Identity と Forms の検出を有効にしてください。投稿の保存には Netlify Blobs を使います。
+
+公開時は GitHub Pages の `main` ブランチにこの変更を反映し、同じ Netlify サイトにもこのリポジトリの最新版をデプロイしてください。Netlify 側のデプロイ完了後、記事ページで名前なしのテスト投稿を行い、管理画面で承認してから記事に表示されることを確認します。独自ドメインを GitHub Pages に設定する場合は、`netlify/functions/article-comments.mjs` の許可オリジンと `comment-thanks.html` の送信先もそのドメインに合わせてください。
+
+既存の `poison` と `tenoch` のコメント保存キーは維持しています。おすすめ欄は固定表示で、月間閲覧数ランキングではありません。
 
 ## 閲覧数の計測（Google Analytics 4）
 

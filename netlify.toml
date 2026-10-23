@@ -1,0 +1,7 @@
+[build]
+  command = "node node_modules/esbuild/bin/esbuild identity-invite.js --bundle --format=esm --platform=browser --target=es2020 --outfile=identity-invite.bundle.js"
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"

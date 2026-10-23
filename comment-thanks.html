@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f9">
+  <meta name="robots" content="noindex">
+  <title>コメントを受け付けました｜Fateくらぶ</title>
+  <style>
+    :root{color-scheme:light;--bg:#f7f7f9;--ink:#25283a;--muted:#686d7d;--red:#bd4148;--gold:#956d27;--line:rgba(35,39,58,.13);--serif:"Yu Mincho","Hiragino Mincho ProN",serif;--sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.8 var(--sans)}.topline{height:3px;background:linear-gradient(90deg,var(--red),#a34351 42%,#d9b878)}main{min-height:100vh;display:grid;place-items:center;padding:24px}.card{width:min(560px,100%);padding:clamp(24px,5vw,44px);background:#fff;border:1px solid var(--line);border-radius:5px;text-align:center;box-shadow:0 5px 20px rgba(30,34,51,.04)}h1{font:500 28px/1.5 var(--serif);margin:0 0 12px}.message{color:var(--muted);margin:0 0 22px}.button{display:inline-block;padding:10px 18px;border-radius:3px;background:var(--red);color:#fff;text-decoration:none;font-size:13px}.button:hover{filter:brightness(1.08)}
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <main><section class="card"><h1>コメントを受け付けました</h1><p class="message">送信ありがとうございます。コメントは内容を確認後に掲載します。</p><a class="button" id="return-link" href="/">記事に戻る</a></section></main>
+  <script>
+    const articleRoutes = {poison: 'article-thread-poison', tenoch: 'article-thread-tenochititlan'};
+    const article = new URLSearchParams(location.search).get('article');
+    if (window.parent !== window && article) {
+      window.parent.postMessage({type: 'fate-club-comment-submitted', article}, 'https://amanekoko172-ai.github.io');
+    }
+    if (articleRoutes[article] || /^[a-z0-9-]+$/.test(article || '')) {
+      const link = document.getElementById('return-link');
+      const page = articleRoutes[article] || article;
+      link.href = `https://amanekoko172-ai.github.io/fate-club/${page}.html`;
+      link.textContent = '記事に戻る';
+    }
+  </script></body>
+</html>

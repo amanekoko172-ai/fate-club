@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f7f7f9">
+  <title>コメント管理｜Fateくらぶ</title>
+  <script>
+    if (location.origin !== "https://symphonious-griffin-6489ff.netlify.app") {
+      location.replace("https://symphonious-griffin-6489ff.netlify.app/comments-admin.html");
+    }
+  </script>
+  <style>
+    :root{color-scheme:light;--bg:#f7f7f9;--paper:#fff;--ink:#25283a;--muted:#686d7d;--red:#bd4148;--line:rgba(35,39,58,.13);--serif:"Yu Mincho","Hiragino Mincho ProN",serif;--sans:system-ui,-apple-system,"Segoe UI",sans-serif}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.8 var(--sans)}.wrap{width:min(860px,calc(100% - 32px));margin:auto}header{background:#fff;border-bottom:1px solid var(--line)}.head{height:66px;display:flex;align-items:center;justify-content:space-between}.brand{font:19px var(--serif);letter-spacing:.05em}.back{font-size:12px;color:var(--muted);text-decoration:none}main{padding:34px 0 70px}h1{font:500 30px var(--serif);margin:0 0 8px}.intro{color:var(--muted);font-size:13px;margin:0 0 24px}.panel{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:22px;box-shadow:0 5px 18px rgba(30,34,51,.035)}.panel h2{font:500 20px var(--serif);margin:0 0 15px}.login-form{max-width:440px}.login-form label,.manual-comment label{display:block;font-size:12px;font-weight:600;margin:0 0 5px}.login-form input,.manual-comment input,.manual-comment select,.manual-comment textarea{display:block;width:100%;padding:11px;border:1px solid var(--line);border-radius:4px;margin:0 0 14px;background:#fff;color:var(--ink);font:14px var(--sans)}.manual-comment textarea{resize:vertical}.manual-comment{margin:0 0 24px;padding:18px;border:1px solid var(--line);border-radius:5px;background:#fcfcfd}.manual-comment p{margin:0 0 14px;color:var(--muted);font-size:12px}button{border:0;border-radius:4px;background:var(--red);color:white;padding:10px 16px;font:600 13px var(--sans);cursor:pointer}button:hover{filter:brightness(1.06)}button:disabled{opacity:.55;cursor:wait}.status{min-height:24px;color:#8e343a;font-size:12px;margin:12px 0 0}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:12px;color:var(--muted)}.logout{background:#fff;color:var(--ink);border:1px solid var(--line);padding:7px 12px}.queue{display:grid;gap:12px}.submission{border:1px solid var(--line);border-radius:5px;padding:16px;background:#fff}.submission-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.article-title{font-size:11px;color:#8d6b2d}.author{font:600 13px var(--sans);margin:4px 0}.date{font-size:10px;color:var(--muted)}.body{white-space:pre-wrap;overflow-wrap:anywhere;margin:12px 0 15px;font-size:14px}.actions{display:flex;gap:8px}.reject{background:#fff;color:#8c3d43;border:1px solid rgba(189,65,72,.32)}.empty{padding:30px 12px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:5px;font-size:13px}.hidden{display:none!important}footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:10px}
+    @media(max-width:560px){.panel{padding:17px}.submission-top{display:block}.date{display:block;margin-top:4px}.toolbar{align-items:flex-start}}
+  </style>
+</head>
+<body>
+  <header><div class="wrap head"><a class="brand" href="index.html">Fateくらぶ｜コメント管理</a><a class="back" href="index.html">トップへ戻る</a></div></header>
+  <main class="wrap">
+    <h1>コメント管理</h1>
+    <p class="intro">読者のコメントは自動で掲載されます。ここから管理者コメントを選んだ記事へ手動で追加できます。</p>
+    <section class="panel" id="login-panel">
+      <h2>管理者ログイン</h2>
+      <form class="login-form" id="login-form">
+        <label for="admin-email">メールアドレス</label>
+        <input id="admin-email" name="email" type="email" autocomplete="username" required>
+        <label for="admin-password">パスワード</label>
+        <input id="admin-password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">ログイン</button>
+      </form>
+      <p class="status" id="login-status" aria-live="polite">Netlifyからの管理者招待を先に完了してください。</p>
+    </section>
+    <section class="panel hidden" id="queue-panel">
+      <div class="toolbar"><span id="admin-label"></span><button class="logout" id="logout-button" type="button">ログアウト</button></div>
+      <section class="manual-comment" aria-labelledby="manual-comment-title">
+        <h2 id="manual-comment-title">コメントを手動で追加</h2>
+        <p>追加すると、選んだ記事にすぐ掲載されます。</p>
+        <form id="manual-comment-form">
+          <label for="manual-article">掲載する記事</label>
+          <select id="manual-article" name="article" required>
+            <option value="article-fate-stay-night">Fate/stay nightはどこから始める？3ルートの入口ガイド</option>
+            <option value="article-fgo-beginner">FGOのストーリーを楽しむための初心者ガイド</option>
+            <option value="article-kara-no-kyoukai-guide">空の境界を初めて楽しむための作品ガイド</option>
+            <option value="article-mahoyo-guide">魔法使いの夜はどんな作品？ネタバレなし入門ガイド</option>
+            <option value="article-thread-7495232">「ウス、姉さんはどう見たって」ぐだぐだサーヴァントの儚さ談義</option>
+            <option value="article-thread-7504514">「【考察】オベロンって実は」スレまとめ</option>
+            <option value="article-thread-7506039">「変な夢を見たでちゅ…」スレまとめ</option>
+            <option value="article-thread-7507546">「三千世界の鴉を殺し」スレまとめ</option>
+            <option value="article-thread-7507604">「先輩、わたしたちのパン屋の名前ですが」スレまとめ</option>
+            <option value="article-thread-7507938">「青子と有珠の恋愛下手ばかりネタにされるけど」スレまとめ</option>
+            <option value="article-thread-7509300">「はかないマスターです」スレまとめ</option>
+            <option value="article-thread-7512539">「【閲覧注意】大変だ！カルデアが内部分裂した！」スレまとめ</option>
+            <option value="article-thread-7513381">「オーロラって汎人類史では醜悪になるらしいけど」スレまとめ</option>
+            <option value="article-thread-7517628">カルナ「緊急事態だったぞマスター、緊急事態だったぞ」スレまとめ</option>
+            <option value="article-thread-7517811">「カルデア大運動会か！！」スレまとめ</option>
+            <option value="article-thread-7518908">伊織「今日はもうこれ以上の買い食いはダメだセイバー」スレまとめ</option>
+            <option value="article-thread-7522266">遠野志貴「アルクェイドは女の子だから戦っちゃダメだ！」スレまとめ</option>
+            <option value="article-thread-7524790">「うぅ………」スレまとめ</option>
+            <option value="article-thread-7525451">「先輩！この特異点は女々しくならなくてはなりません！」スレまとめ</option>
+            <option value="poison">「これ毒かも！？」静謐ちゃんの手洗いスレまとめ</option>
+            <option value="tenoch">「儚い女！？」都市としてのテノチをめぐるスレッドまとめ</option>
+          </select>
+          <label for="manual-name">表示名</label>
+          <input id="manual-name" name="name" type="text" maxlength="30" value="管理人" placeholder="管理人">
+          <label for="manual-comment">コメント（1000文字まで）</label>
+          <textarea id="manual-comment" name="comment" rows="4" maxlength="1000" required placeholder="掲載するコメントを書いてください"></textarea>
+          <button id="manual-submit" type="submit">記事に掲載する</button>
+          <p class="status" id="manual-status" aria-live="polite"></p>
+        </form>
+      </section>
+      <h2>確認待ちの投稿</h2>
+      <p class="status" id="queue-status" aria-live="polite"></p>
+      <div class="queue" id="queue"></div>
+    </section>
+  </main>
+  <footer><div class="wrap">Fateくらぶ｜TYPE-MOON作品のファンによる非公式サイトです。</div></footer>
+  <script>
+    const loginPanel = document.getElementById('login-panel');
+    const queuePanel = document.getElementById('queue-panel');
+    const loginStatus = document.getElementById('login-status');
+    const queueStatus = document.getElementById('queue-status');
+    const manualStatus = document.getElementById('manual-status');
+    const queue = document.getElementById('queue');
+    const articles = {
+      "article-fate-stay-night": "Fate/stay nightはどこから始める？3ルートの入口ガイド",
+      "article-fgo-beginner": "FGOのストーリーを楽しむための初心者ガイド",
+      "article-kara-no-kyoukai-guide": "空の境界を初めて楽しむための作品ガイド",
+      "article-mahoyo-guide": "魔法使いの夜はどんな作品？ネタバレなし入門ガイド",
+      "article-thread-7495232": "「ウス、姉さんはどう見たって」ぐだぐだサーヴァントの儚さ談義",
+      "article-thread-7504514": "「【考察】オベロンって実は」スレまとめ",
+      "article-thread-7506039": "「変な夢を見たでちゅ…」スレまとめ",
+      "article-thread-7507546": "「三千世界の鴉を殺し」スレまとめ",
+      "article-thread-7507604": "「先輩、わたしたちのパン屋の名前ですが」スレまとめ",
+      "article-thread-7507938": "「青子と有珠の恋愛下手ばかりネタにされるけど」スレまとめ",
+      "article-thread-7509300": "「はかないマスターです」スレまとめ",
+      "article-thread-7512539": "「【閲覧注意】大変だ！カルデアが内部分裂した！」スレまとめ",
+      "article-thread-7513381": "「オーロラって汎人類史では醜悪になるらしいけど」スレまとめ",
+      "article-thread-7517628": "カルナ「緊急事態だったぞマスター、緊急事態だったぞ」スレまとめ",
+      "article-thread-7517811": "「カルデア大運動会か！！」スレまとめ",
+      "article-thread-7518908": "伊織「今日はもうこれ以上の買い食いはダメだセイバー」スレまとめ",
+      "article-thread-7522266": "遠野志貴「アルクェイドは女の子だから戦っちゃダメだ！」スレまとめ",
+      "article-thread-7524790": "「うぅ………」スレまとめ",
+      "article-thread-7525451": "「先輩！この特異点は女々しくならなくてはなりません！」スレまとめ",
+      poison: "「これ毒かも！？」静謐ちゃんの手洗いスレまとめ",
+      tenoch: "「儚い女！？」都市としてのテノチをめぐるスレッドまとめ"
+    };
+
+    async function request(url, options = {}) {
+      const response = await fetch(url, { credentials: 'same-origin', ...options });
+      const data = response.status === 204 ? {} : await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(data.error || '処理に失敗しました。');
+      return data;
+    }
+
+    function showLogin(message = '') {
+      loginPanel.classList.remove('hidden');
+      queuePanel.classList.add('hidden');
+      if (message) loginStatus.textContent = message;
+    }
+
+    function renderEntry(comment) {
+      const article = document.createElement('article');
+      article.className = 'submission';
+      const top = document.createElement('div');
+      top.className = 'submission-top';
+      const info = document.createElement('div');
+      const title = document.createElement('div');
+      title.className = 'article-title';
+      title.textContent = articles[comment.article] || '記事を特定できません';
+      const author = document.createElement('div');
+      author.className = 'author';
+      author.textContent = comment.name || '匿名';
+      const date = document.createElement('time');
+      date.className = 'date';
+      date.dateTime = comment.submittedAt;
+      date.textContent = new Date(comment.submittedAt).toLocaleString('ja-JP');
+      info.append(title, author, date);
+      top.append(info);
+      const body = document.createElement('p');
+      body.className = 'body';
+      body.textContent = comment.comment;
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const approve = document.createElement('button');
+      approve.type = 'button';
+      approve.textContent = '承認して掲載';
+      approve.addEventListener('click', () => moderate(comment.id, 'approve', article));
+      const reject = document.createElement('button');
+      reject.type = 'button';
+      reject.className = 'reject';
+      reject.textContent = '削除';
+      reject.addEventListener('click', () => moderate(comment.id, 'reject', article));
+      actions.append(approve, reject);
+      article.append(top, body, actions);
+      return article;
+    }
+
+    async function loadQueue() {
+      queueStatus.textContent = '読み込み中です。';
+      queue.replaceChildren();
+      try {
+        const { comments } = await request('/api/comments?queue=pending');
+        queueStatus.textContent = '';
+        if (!comments.length) {
+          const empty = document.createElement('div');
+          empty.className = 'empty';
+          empty.textContent = '確認待ちの投稿はありません。';
+          queue.append(empty);
+          return;
+        }
+        comments.forEach((comment) => queue.append(renderEntry(comment)));
+      } catch (error) {
+        if (error.message.includes('ログイン') || error.message.includes('権限')) showLogin(error.message);
+        else queueStatus.textContent = error.message;
+      }
+    }
+
+    async function openQueue() {
+      try {
+        const user = await request('/api/admin-auth');
+        loginPanel.classList.add('hidden');
+        queuePanel.classList.remove('hidden');
+        document.getElementById('admin-label').textContent = `${user.email} でログイン中`;
+        await loadQueue();
+      } catch {
+        showLogin();
+      }
+    }
+
+    async function moderate(id, action, card) {
+      const buttons = card.querySelectorAll('button');
+      buttons.forEach((button) => { button.disabled = true; });
+      try {
+        await request('/api/comments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id, action })
+        });
+        card.remove();
+        if (!queue.querySelector('.submission')) {
+          const empty = document.createElement('div');
+          empty.className = 'empty';
+          empty.textContent = '確認待ちの投稿はありません。';
+          queue.append(empty);
+        }
+      } catch (error) {
+        queueStatus.textContent = error.message;
+        buttons.forEach((button) => { button.disabled = false; });
+      }
+    }
+
+    document.getElementById('login-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      loginStatus.textContent = 'ログインしています。';
+      const form = new FormData(event.currentTarget);
+      try {
+        await request('/api/admin-auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: form.get('email'), password: form.get('password') })
+        });
+        await openQueue();
+      } catch (error) {
+        loginStatus.textContent = error.message;
+      }
+    });
+
+    document.getElementById('logout-button').addEventListener('click', async () => {
+      try { await request('/api/admin-auth', { method: 'DELETE' }); }
+      finally { showLogin('ログアウトしました。'); }
+    });
+
+    document.getElementById('manual-comment-form').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const submit = document.getElementById('manual-submit');
+      const values = new FormData(form);
+      submit.disabled = true;
+      manualStatus.textContent = '掲載しています。';
+      try {
+        await request('/api/comments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'create',
+            article: values.get('article'),
+            name: values.get('name'),
+            comment: values.get('comment')
+          })
+        });
+        form.reset();
+        manualStatus.textContent = '記事に掲載しました。記事ページを再読み込みすると確認できます。';
+      } catch (error) {
+        manualStatus.textContent = error.message;
+      } finally {
+        submit.disabled = false;
+      }
+    });
+
+    openQueue();
+  </script>
+</body>
+</html>

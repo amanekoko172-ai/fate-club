@@ -27,7 +27,7 @@
     <article class="article">
       <span class="category">掲示板まとめ</span>
       <h1>「儚い女！？」都市としてのテノチをめぐるスレッドまとめ</h1>
-      <div class="meta"><span>カテゴリ：Fate/Grand Order・テノチティトラン</span><span>ネタバレ：あり（FGO第2部第7章）</span><span data-comment-count="tenoch">掲載コメント 0件</span></div>
+      <div class="meta"><span>カテゴリ：Fate/Grand Order・テノチティトラン</span><span>ネタバレ：あり（FGO第2部第7章）</span></div>
       <p class="intro">Fate/Grand Order第2部第7章に関するネタバレを含みます。都市としてのテノチをめぐる、あにまん掲示板の過去ログを短い引用と独自の解説で紹介します。</p>
       <div class="article-body">
         <p class="spoiler-note"><strong>ネタバレ注意：</strong>FGO第2部第7章の登場人物・展開に触れています。</p>
@@ -65,9 +65,10 @@
         <p class="share-status" id="share-status" aria-live="polite"></p>
       </div>
       <section class="comments" aria-labelledby="comments-title">
-  <h2 id="comments-title">コメント</h2>
-  <p class="comment-note">コメント機能は再構築中です。再開後、この欄に表示します。</p>
-</section>
+        <h2 id="comments-title">コメント</h2>
+        <div id="comments-widget" class="comments-widget" aria-label="コメント欄"></div>
+        <noscript><p class="comment-note">コメントを表示するにはJavaScriptを有効にしてください。</p></noscript>
+      </section>
       <section class="related" aria-labelledby="related-title" style="margin-top:30px;padding-top:18px;border-top:1px solid var(--line);font-size:13px">
         <h2 id="related-title" style="font:500 18px var(--serif);margin:0 0 10px">あわせて読みたい</h2>
         <ul style="padding-left:20px;margin:0">
@@ -109,8 +110,9 @@
       catch { status.textContent = 'リンクをコピーできませんでした。アドレスバーからコピーしてください。'; }
     });
   </script>
-  
-  
+
+
+  <script src="./comments.js" defer></script>
 </body>
 </html>
 
